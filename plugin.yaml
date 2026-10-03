@@ -1,0 +1,49 @@
+name: hermes-meeting-intelligence
+version: 0.1.0
+description: "Meeting intelligence plugin for Hermes Agent: speaker-aware transcript processing, structured decision/action extraction, and persistent cross-meeting memory."
+author: "Taqi Molavi"
+homepage: "https://github.com/tmolavi/hermes-meeting-intelligence"
+license: "Apache-2.0"
+entrypoint: "hermes_meeting_intelligence:register"
+
+tools:
+  - name: meeting_transcribe
+    description: "Transcribe meeting audio using configured STT provider (local CPU/GPU or remote API) with speaker diarization."
+  - name: meeting_extract
+    description: "Extract structured intelligence (decisions, proposals, disagreements, questions, action items, evidence) from a raw or diarized transcript."
+  - name: meeting_memory_store
+    description: "Save a validated MeetingRecord into persistent SQLite meeting memory with automated entity and topic indexing."
+  - name: meeting_memory_query
+    description: "Search and retrieve cross-meeting context, prior decisions, open actions, and historical discussion topics."
+  - name: meeting_link_related
+    description: "Explicitly link two meetings with a typed relationship (e.g., continues, supersedes, references, blocks)."
+  - name: meeting_correct_record
+    description: "Apply an owner correction to a meeting record with audit provenance preservation."
+  - name: meeting_route_select
+    description: "Select optimal model/provider route based on meeting latency, cost, and quality priorities."
+
+config_schema:
+  type: object
+  properties:
+    provider_default:
+      type: string
+      default: "mock"
+      description: "Default STT & extraction provider ('mock', 'openai', 'groq', 'deepgram', 'local_whisper')."
+    routing_strategy:
+      type: string
+      default: "BALANCED"
+      enum: ["LATENCY", "COST", "QUALITY", "BALANCED"]
+      description: "Routing optimization profile for real-time meetings."
+    db_path:
+      type: string
+      default: "~/.hermes/meeting_memory.sqlite"
+      description: "Path to the persistent SQLite meeting memory store."
+    openai_api_key:
+      type: string
+      description: "API key for OpenAI-compatible audio/chat endpoints (or set OPENAI_API_KEY env var)."
+    groq_api_key:
+      type: string
+      description: "API key for Groq ultra-fast Whisper/LLaMA inference (or set GROQ_API_KEY env var)."
+    deepgram_api_key:
+      type: string
+      description: "API key for Deepgram live/batch speech-to-text (or set DEEPGRAM_API_KEY env var)."

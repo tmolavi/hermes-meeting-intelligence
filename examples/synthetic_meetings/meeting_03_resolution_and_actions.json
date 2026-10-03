@@ -1,0 +1,147 @@
+{
+  "meeting_id": "mtg_synth_003",
+  "title": "Architecture Review: Adaptive Buffer Resolution & Release Sign-off",
+  "started_at": "2026-10-03T11:00:00Z",
+  "ended_at": "2026-10-03T11:40:00Z",
+  "language": "en",
+  "participants": [
+    {
+      "speaker_id": "speaker_alice",
+      "name": "Alice Chen",
+      "role": "Lead Architect"
+    },
+    {
+      "speaker_id": "speaker_bob",
+      "name": "Bob Martin",
+      "role": "Backend Engineer"
+    },
+    {
+      "speaker_id": "speaker_clara",
+      "name": "Clara Ruiz",
+      "role": "Real-Time Engineer"
+    }
+  ],
+  "speaker_segments": [
+    {
+      "segment_id": "seg_201",
+      "start": 0.0,
+      "end": 14.0,
+      "speaker_id": "speaker_clara",
+      "text": "The benchmark shows Groq handles 1.5s streaming effortlessly (110ms latency), while on CPU 3.0s is the sweet spot. We decided to use adaptive chunking based on the active routing strategy.",
+      "confidence": 0.99
+    },
+    {
+      "segment_id": "seg_202",
+      "start": 14.5,
+      "end": 26.0,
+      "speaker_id": "speaker_bob",
+      "text": "That completely resolves my concern. Also, the SQLite storage and schema validator from action item act_001 are fully implemented and passing all tests.",
+      "confidence": 0.98
+    },
+    {
+      "segment_id": "seg_203",
+      "start": 26.5,
+      "end": 38.0,
+      "speaker_id": "speaker_alice",
+      "text": "Excellent. We agree to proceed with v0.1.0 release packaging. Alice will publish the repository and documentation.",
+      "confidence": 0.99
+    }
+  ],
+  "transcript": "[Clara Ruiz]: The benchmark shows Groq handles 1.5s streaming effortlessly (110ms latency), while on CPU 3.0s is the sweet spot. We decided to use adaptive chunking based on the active routing strategy.\n[Bob Martin]: That completely resolves my concern. Also, the SQLite storage and schema validator from action item act_001 are fully implemented and passing all tests.\n[Alice Chen]: Excellent. We agree to proceed with v0.1.0 release packaging. Alice will publish the repository and documentation.",
+  "topics": [
+    "Adaptive Buffering",
+    "Release Sign-off",
+    "SQLite Memory",
+    "v0.1.0"
+  ],
+  "entities": [
+    {
+      "name": "Groq",
+      "entity_type": "provider",
+      "mentions_count": 1
+    },
+    {
+      "name": "SQLite",
+      "entity_type": "database",
+      "mentions_count": 1
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "dec_002",
+      "description": "Adopt adaptive chunking: 1.5s for cloud LPU routes and 3.0s for local CPU nodes.",
+      "decided_by": "Engineering Consensus",
+      "timestamp_offset": 12.0,
+      "evidence_quote": "We decided to use adaptive chunking based on the active routing strategy."
+    },
+    {
+      "decision_id": "dec_003",
+      "description": "Approve v0.1.0 public release with complete documentation.",
+      "decided_by": "Alice Chen",
+      "timestamp_offset": 30.0,
+      "evidence_quote": "We agree to proceed with v0.1.0 release packaging."
+    }
+  ],
+  "proposals": [
+    {
+      "proposal_id": "prop_003",
+      "description": "Adaptive chunk buffer sizing based on router strategy",
+      "proposed_by": "Clara Ruiz",
+      "status": "accepted"
+    }
+  ],
+  "disagreements": [
+    {
+      "disagreement_id": "dis_001",
+      "topic": "Real-time audio buffer size on CPU nodes",
+      "parties": ["Clara Ruiz", "Bob Martin"],
+      "points_of_view": ["Resolved via adaptive routing strategy"],
+      "resolution_status": "resolved",
+      "resolution_notes": "Resolved by adopting 1.5s for cloud LPU and 3.0s for CPU"
+    }
+  ],
+  "questions": [],
+  "action_items": [
+    {
+      "action_id": "act_003",
+      "description": "Publish v0.1.0 repository, documentation, and CI workflows",
+      "assignee": "Alice Chen",
+      "due_date": "2026-10-03",
+      "status": "in_progress",
+      "source_quote": "Alice will publish the repository and documentation."
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_002",
+      "claim": "Groq achieves 110ms latency on 1.5s chunks",
+      "quote": "Groq handles 1.5s streaming effortlessly (110ms latency)",
+      "segment_id": "seg_201",
+      "speaker_id": "speaker_clara",
+      "confidence": 0.99
+    }
+  ],
+  "referenced_documents": [],
+  "owner_corrections": [],
+  "provenance": {
+    "pipeline_version": "0.1.0",
+    "stt_provider": "mock",
+    "extraction_provider": "mock",
+    "processed_at": "2026-10-03T11:42:00Z"
+  },
+  "related_meetings": [
+    {
+      "target_meeting_id": "mtg_synth_001",
+      "relationship_type": "continues",
+      "description": "Completes milestone planned in kickoff meeting."
+    },
+    {
+      "target_meeting_id": "mtg_synth_002",
+      "relationship_type": "supersedes",
+      "description": "Resolves chunking disagreement from meeting 2 with adaptive policy."
+    }
+  ],
+  "metadata": {
+    "is_synthetic": true
+  }
+}

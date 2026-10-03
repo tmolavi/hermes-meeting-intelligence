@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use or reference Hermes Meeting Intelligence in your research or software, please cite it as below."
+title: "Hermes Meeting Intelligence: Reusable Meeting Intelligence Skills and Cross-Meeting Memory for Hermes Agent"
+version: 0.1.0
+date-released: 2026-10-03
+url: "https://github.com/tmolavi/hermes-meeting-intelligence"
+authors:
+  - family-names: "Molavi"
+    given-names: "Taqi"
+    orcid: "https://orcid.org/0009-0000-0000-0000"
+    website: "https://molavi.pro"
+abstract: "An open-source, provider-agnostic meeting intelligence framework for Hermes Agent, providing structured decision extraction, persistent SQLite meeting memory, cross-meeting retrieval, and low-latency routing."
+keywords:
+  - "hermes-agent"
+  - "ai-agent"
+  - "meeting-intelligence"
+  - "meeting-memory"
+  - "speaker-diarization"
+  - "agent-memory"
+license: "Apache-2.0"

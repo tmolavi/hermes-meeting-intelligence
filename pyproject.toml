@@ -1,0 +1,102 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hermes-meeting-intelligence"
+version = "0.1.0"
+description = "Open-source meeting intelligence skills and tools for Hermes Agent: speaker-aware meetings, persistent meeting memory, cross-meeting context, and provider-agnostic real-time AI workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Taqi Molavi", email = "contact@molavi.pro" }
+]
+maintainers = [
+    { name = "Taqi Molavi", email = "contact@molavi.pro" }
+]
+keywords = [
+    "hermes-agent",
+    "ai-agent",
+    "meeting-intelligence",
+    "agent-memory",
+    "speech-to-text",
+    "speaker-diarization",
+    "meeting-memory",
+    "multilingual-ai",
+    "continuous-learning"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+    "pydantic>=2.5.0",
+    "pyyaml>=6.0.1",
+    "typing-extensions>=4.8.0",
+    "httpx>=0.25.0"
+]
+
+[project.optional-dependencies]
+local-stt = [
+    "faster-whisper>=1.0.0"
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0"
+]
+all = [
+    "faster-whisper>=1.0.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0"
+]
+
+[project.scripts]
+hermes-meeting = "hermes_meeting_intelligence.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/tmolavi/hermes-meeting-intelligence"
+Documentation = "https://github.com/tmolavi/hermes-meeting-intelligence/tree/main/docs"
+Repository = "https://github.com/tmolavi/hermes-meeting-intelligence"
+Issues = "https://github.com/tmolavi/hermes-meeting-intelligence/issues"
+Changelog = "https://github.com/tmolavi/hermes-meeting-intelligence/blob/main/CHANGELOG.md"
+Author = "https://molavi.pro"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hermes_meeting_intelligence"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+check_untyped_defs = true

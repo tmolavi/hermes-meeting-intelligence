@@ -1,0 +1,106 @@
+{
+  "meeting_id": "mtg_synth_001",
+  "title": "Project Kickoff: Knowledge Architecture & Data Layer",
+  "started_at": "2026-10-01T09:00:00Z",
+  "ended_at": "2026-10-01T09:45:00Z",
+  "language": "en",
+  "participants": [
+    {
+      "speaker_id": "speaker_alice",
+      "name": "Alice Chen",
+      "role": "Lead Architect"
+    },
+    {
+      "speaker_id": "speaker_bob",
+      "name": "Bob Martin",
+      "role": "Backend Engineer"
+    }
+  ],
+  "speaker_segments": [
+    {
+      "segment_id": "seg_001",
+      "start": 0.0,
+      "end": 12.5,
+      "speaker_id": "speaker_alice",
+      "text": "Welcome everyone. Today we must finalize our storage layer. We decided to migrate the primary meeting memory to SQLite and use strict Pydantic schemas for data portability.",
+      "confidence": 0.99
+    },
+    {
+      "segment_id": "seg_002",
+      "start": 13.0,
+      "end": 25.0,
+      "speaker_id": "speaker_bob",
+      "text": "I agree. SQLite has zero external daemon overhead and allows full offline local verification.",
+      "confidence": 0.98
+    }
+  ],
+  "transcript": "[Alice Chen]: Welcome everyone. Today we must finalize our storage layer. We decided to migrate the primary meeting memory to SQLite and use strict Pydantic schemas for data portability.\n[Bob Martin]: I agree. SQLite has zero external daemon overhead and allows full offline local verification.",
+  "topics": [
+    "Storage Architecture",
+    "SQLite",
+    "Pydantic"
+  ],
+  "entities": [
+    {
+      "name": "SQLite",
+      "entity_type": "database",
+      "mentions_count": 2
+    },
+    {
+      "name": "Pydantic",
+      "entity_type": "framework",
+      "mentions_count": 1
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "dec_001",
+      "description": "Migrate meeting memory storage layer to SQLite with Pydantic serialization.",
+      "decided_by": "Alice Chen & Bob Martin",
+      "timestamp_offset": 10.0,
+      "evidence_quote": "We decided to migrate the primary meeting memory to SQLite and use strict Pydantic schemas for data portability."
+    }
+  ],
+  "proposals": [
+    {
+      "proposal_id": "prop_001",
+      "description": "Adopt SQLite as local relational store",
+      "proposed_by": "Alice Chen",
+      "status": "accepted"
+    }
+  ],
+  "disagreements": [],
+  "questions": [],
+  "action_items": [
+    {
+      "action_id": "act_001",
+      "description": "Implement SQLite memory store and schema validator by Friday",
+      "assignee": "Bob Martin",
+      "due_date": "2026-10-05",
+      "status": "pending",
+      "source_quote": "Bob will implement the memory store."
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_001",
+      "claim": "SQLite has zero external daemon overhead",
+      "quote": "SQLite has zero external daemon overhead and allows full offline local verification.",
+      "segment_id": "seg_002",
+      "speaker_id": "speaker_bob",
+      "confidence": 0.98
+    }
+  ],
+  "referenced_documents": [],
+  "owner_corrections": [],
+  "provenance": {
+    "pipeline_version": "0.1.0",
+    "stt_provider": "mock",
+    "extraction_provider": "mock",
+    "processed_at": "2026-10-01T09:46:00Z"
+  },
+  "related_meetings": [],
+  "metadata": {
+    "is_synthetic": true
+  }
+}

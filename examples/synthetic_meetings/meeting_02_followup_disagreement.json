@@ -1,0 +1,122 @@
+{
+  "meeting_id": "mtg_synth_002",
+  "title": "Architecture Sync: Streaming Buffer & Latency Bounds",
+  "started_at": "2026-10-02T14:00:00Z",
+  "ended_at": "2026-10-02T14:30:00Z",
+  "language": "en",
+  "participants": [
+    {
+      "speaker_id": "speaker_alice",
+      "name": "Alice Chen",
+      "role": "Lead Architect"
+    },
+    {
+      "speaker_id": "speaker_bob",
+      "name": "Bob Martin",
+      "role": "Backend Engineer"
+    },
+    {
+      "speaker_id": "speaker_clara",
+      "name": "Clara Ruiz",
+      "role": "Real-Time Engineer"
+    }
+  ],
+  "speaker_segments": [
+    {
+      "segment_id": "seg_101",
+      "start": 0.0,
+      "end": 10.0,
+      "speaker_id": "speaker_clara",
+      "text": "For real-time meetings, a 5-second buffer is too sluggish for natural conversational interruption. I propose reducing chunk duration to 1.5 seconds.",
+      "confidence": 0.97
+    },
+    {
+      "segment_id": "seg_102",
+      "start": 10.5,
+      "end": 22.0,
+      "speaker_id": "speaker_bob",
+      "text": "I disagree with 1.5s chunks for CPU-only nodes because the transcription overhead will cause packet pileups.",
+      "confidence": 0.96
+    },
+    {
+      "segment_id": "seg_103",
+      "start": 22.5,
+      "end": 35.0,
+      "speaker_id": "speaker_alice",
+      "text": "Let us table this until Clara runs benchmarks on both CPU and cloud Groq endpoints.",
+      "confidence": 0.99
+    }
+  ],
+  "transcript": "[Clara Ruiz]: For real-time meetings, a 5-second buffer is too sluggish for natural conversational interruption. I propose reducing chunk duration to 1.5 seconds.\n[Bob Martin]: I disagree with 1.5s chunks for CPU-only nodes because the transcription overhead will cause packet pileups.\n[Alice Chen]: Let us table this until Clara runs benchmarks on both CPU and cloud Groq endpoints.",
+  "topics": [
+    "Real-Time Buffering",
+    "Latency",
+    "CPU Constraints"
+  ],
+  "entities": [
+    {
+      "name": "Groq",
+      "entity_type": "provider",
+      "mentions_count": 1
+    }
+  ],
+  "decisions": [],
+  "proposals": [
+    {
+      "proposal_id": "prop_002",
+      "description": "Reduce real-time chunk buffer to 1.5 seconds",
+      "proposed_by": "Clara Ruiz",
+      "status": "deferred"
+    }
+  ],
+  "disagreements": [
+    {
+      "disagreement_id": "dis_001",
+      "topic": "Real-time audio buffer size on CPU nodes",
+      "parties": ["Clara Ruiz", "Bob Martin"],
+      "points_of_view": [
+        "Clara: 1.5s chunk needed for responsive conversational turn-taking",
+        "Bob: 1.5s chunk causes processing bottlenecks on CPU-first environments"
+      ],
+      "resolution_status": "tabled",
+      "resolution_notes": "Awaiting benchmark numbers comparing CPU vs Groq LPU latency"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "q_001",
+      "question": "What is the CPU throughput difference between 1.5s and 3.0s chunks?",
+      "asked_by": "Alice Chen",
+      "is_answered": false
+    }
+  ],
+  "action_items": [
+    {
+      "action_id": "act_002",
+      "description": "Run audio chunking latency benchmarks on CPU and Groq API",
+      "assignee": "Clara Ruiz",
+      "due_date": "2026-10-04",
+      "status": "in_progress",
+      "source_quote": "Clara runs benchmarks on both CPU and cloud Groq endpoints."
+    }
+  ],
+  "evidence": [],
+  "referenced_documents": [],
+  "owner_corrections": [],
+  "provenance": {
+    "pipeline_version": "0.1.0",
+    "stt_provider": "mock",
+    "extraction_provider": "mock",
+    "processed_at": "2026-10-02T14:31:00Z"
+  },
+  "related_meetings": [
+    {
+      "target_meeting_id": "mtg_synth_001",
+      "relationship_type": "continues",
+      "description": "Follow-up discussion on real-time pipeline requirements."
+    }
+  ],
+  "metadata": {
+    "is_synthetic": true
+  }
+}

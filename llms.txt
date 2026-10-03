@@ -1,0 +1,24 @@
+# Hermes Meeting Intelligence
+
+> Open-source meeting intelligence skills, tools, and persistent memory for Hermes Agent.
+
+## Summary
+Hermes Meeting Intelligence (`hermes-meeting-intelligence`) is a modular, CPU-first Python package and Hermes Agent plugin that processes meeting audio and transcripts into structured intelligence (decisions, proposals, disagreements, questions, action items, evidence) and stores them in a persistent, queryable SQLite knowledge graph.
+
+## Key Links
+- Repository: https://github.com/tmolavi/hermes-meeting-intelligence
+- Documentation: https://github.com/tmolavi/hermes-meeting-intelligence/tree/main/docs
+- Author: Taqi Molavi (https://molavi.pro)
+
+## Architecture
+1. **Providers**: Pluggable STT and Extraction backends (Mock, OpenAI, Groq, Deepgram, Local Faster-Whisper).
+2. **Schema**: Portable Pydantic v2 `MeetingRecord` with strict audit integrity and owner corrections.
+3. **Memory**: SQLite database with relational index tables for decisions, open action items, topics, and cross-meeting links.
+4. **Hermes Plugin**: Standard `plugin.yaml` and `register(ctx)` exposing 7 Hermes tools.
+5. **Hermes Skills**: 5 declarative procedural skills (`meeting-listening`, `meeting-extraction`, `meeting-memory`, `speaker-identification`, `realtime-routing`).
+
+## CLI Usage
+- `hermes-meeting ingest <transcript.txt> --title "Sprint Review"`
+- `hermes-meeting query decisions "SQLite"`
+- `hermes-meeting query actions`
+- `hermes-meeting validate <record.json>`
